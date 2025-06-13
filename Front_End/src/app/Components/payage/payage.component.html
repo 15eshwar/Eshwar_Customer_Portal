@@ -1,0 +1,52 @@
+<nav class="navbar">
+  <h1>Explore Your Payment and aging</h1>
+  <ul class="nav-menu">
+    <li><a (click)="goBack()">Back</a></li>
+  </ul>
+</nav>
+
+<!-- Loading Spinner -->
+<div *ngIf="isLoading" class="loader">
+  <div class="spinner"></div>
+  <p>Fetching Data...</p>
+</div>
+<!-- No Data Message -->
+<div  *ngIf="noData && !isLoading" class="no-data-fancy">
+  <svg class="no-data-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="32" cy="32" r="30" stroke="#ff4c4c" fill="none"/>
+    <line x1="20" y1="20" x2="44" y2="44" stroke="#ff4c4c"/>
+    <line x1="44" y1="20" x2="20" y2="44" stroke="#ff4c4c"/>
+  </svg>
+  <h3>Oops! No data found.</h3>
+  <p>Looks like you have no Payment and Aging Data yet.</p>
+  </div>
+
+<div *ngIf="!isLoading && payAgeData.length > 0" class="payage-section">
+  <h2>Payment and Aging Data</h2>
+  <div class="table-wrapper" >
+    <table class="payage-table">
+      <thead>
+        <tr>
+          <th>VBELN</th>
+          <th>Invoice Date</th>
+          <th>Due Date</th>
+          <th>Amount</th>
+          <th>Currency</th>
+          <th>Aging</th>
+          <th>Aging Days</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of payAgeData">
+          <td>{{ item.VBELN }}</td>
+          <td>{{ item.FKDAT }}</td>
+          <td>{{ item.DUE_DATE }}</td>
+          <td>{{ item.NETWR }}</td>
+          <td>{{ item.WAERK }}</td>
+          <td>{{ item.AGING }}</td>
+          <td>{{ item.AGING_DAYS }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

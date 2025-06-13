@@ -1,0 +1,362 @@
+/* === Global Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+/* === Navbar Styling === */
+.navbar {
+  padding: 30px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(2px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  flex-direction: row;
+}
+
+/* Navbar Title */
+.navbar h1 {
+  color: #ffffff;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase ;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar Menu */
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 35px;
+  margin: 0;
+  padding: 0;
+}
+
+
+.nav-menu li a {
+  position: relative;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  background: rgba(61, 149, 44, 0.08);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+   cursor: pointer;
+}
+
+/* Hover effect */
+.nav-menu li a:hover {
+  background: rgba(255, 76, 76, 0.2);
+  border-color: rgba(255, 76, 76, 0.5);
+  color: #ff4c4c;
+  box-shadow: 0 4px 16px rgba(255, 76, 76, 0.3);
+}
+
+
+.nav-menu li a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -2px;
+  background-color: #ff4c4c;
+  transition: width 0.3s ease;
+}
+
+.nav-menu li a:hover::after {
+  width: 100%;
+}
+
+.hero-image-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-direction: row;
+  height: calc(100vh - 100px);
+  padding: 0 2rem; /* Adds gap on left and right */
+  padding-top: 2rem;
+  box-sizing: border-box;
+  gap: 2rem; /* Space between image and content */
+}
+
+.hero-image {
+  flex: 1;
+  width: 25%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content {
+  flex: 2;
+  height: 100%; /* Makes it match hero-image-container's height */
+  width: 100%;
+  color: white;
+  text-align: center;
+  z-index: 2;
+  padding: 2rem;
+  border-radius: 12px;
+  box-sizing: border-box; /* Ensures padding doesn’t break layout */
+  font-size:xx-large;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center contents vertically */
+  align-items: center;     /* Center contents horizontally */
+  gap: 1.5rem;             /* Adds space between h1, p, and button */
+}
+
+.hero-content button {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background-color: #00bfff;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 191, 255, 0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.hero-content button:hover {
+  background-color: #009acd; /* Slightly darker blue */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 191, 255, 0.4);
+}
+
+  .banner {
+    margin-top: 20px;
+    position: relative;
+    height: 100vh;
+    background-image: url('https://cdn.britannica.com/94/192794-050-3F3F3DDD/panels-electricity-order-sunlight.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    border-radius: 3rem;
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+  
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(23, 19, 27, 0.268);
+    border-radius: 3rem;
+  }
+  .content {
+    position: relative;
+    max-width: 1300px;
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+.top-left-title {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  font-size: 3rem;
+  font-weight: 800;
+  z-index: 2;
+  color: #7ae2ff;
+}
+.bottom-left-quote{
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  font-size: 2rem;
+  font-weight: 800;
+  z-index: 2;
+}
+.bottom-left-quotename{
+  position: absolute;
+  bottom: 10px;
+  padding-left: 350px;
+
+  font-size: 1rem;
+  font-weight: 800;
+  z-index: 2;
+}
+h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.1;
+  }
+  p {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin-bottom: 30px;
+  }
+
+.welcome-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  height: calc(200vh - 700px); /* Full screen minus navbar height */
+}
+.image-container{
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  height: calc(100vh - 100px); /* Adjust 80px to match your navbar height */
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1rem;
+  box-sizing: border-box;
+  flex: 1;
+  min-width: 300px;
+}
+.image-top{
+     width: 100%;
+     height: 60%;
+     border-radius: 12px;
+     padding-top: 50px;
+}
+.image-bottom {
+ width: 100%;
+  height: 60%;
+  border-radius: 12px;
+   padding-bottom: 20px;
+}
+.image-top + .image-bottom {
+  margin-top: 2rem;           /* Adds space between the two sections */
+}
+
+
+
+/* Wrapper for centering the welcome section */
+.welcome-wrapper {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  height: calc(100vh - 150px); /* Adjust 80px to match your navbar height */
+  flex-direction: column;
+  padding: 2rem;
+  box-sizing: border-box;
+  flex: 2;
+}
+/* Translucent welcome box */
+.welcome-section {
+  text-align: center;
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  color: #f2f2f2;
+  max-width: 800px;
+  width: 100%;
+}
+
+.welcome-section h2 {
+  font-size: 2.4rem;
+  color: #24eac9;
+  margin-bottom: 1rem;
+}
+
+.welcome-section p{
+  font-size: 1.125rem;
+  color: #dcdcdc;
+  padding-left: 6rem;
+}
+
+
+.highlights,
+.get-started {
+  margin-top: 2rem;
+  text-align: left;
+  padding: 1.5rem;            /* Adds internal spacing */
+  background-color: #191b3b;  /* Optional: better contrast background */
+  border-radius: 20px;         /* Optional: rounded corners */
+ 
+}
+
+.highlights + .get-started {
+  margin-top: 3rem;           /* Adds space between the two sections */
+}
+
+.highlights ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-top: 1rem;
+}
+.highlights h2{
+  color: #90ee90;
+}
+.highlights li {
+  margin-bottom: 0.75rem;
+  color: #e0e0e0;
+}
+
+.get-started h2 {
+  color: #90ee90;
+  margin-bottom: 1rem;
+  cursor: pointer;
+
+}
+
+.get-started p {
+  color: #e0e0e0;
+  line-height: 1.3;
+  padding-left: 0%;
+
+}
+
+.footer {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-top: 5rem;
+  color: #ffffff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.footer a {
+  cursor: pointer;
+  color: #00bfff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #90ee90;
+}
+
+.footer p {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}

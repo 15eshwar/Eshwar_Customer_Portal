@@ -1,0 +1,190 @@
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === Navbar Styling === */
+.navbar {
+  padding: 30px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Navbar Title */
+.navbar h1 {
+  color: #ffffff;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+    margin: 0;
+  padding: 0;
+}
+
+/* Navbar Menu */
+.nav-menu {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  gap: 35px;
+  margin: 0;
+  padding: 0;
+}
+
+
+.nav-menu li a {
+  position: relative;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+   cursor: pointer;
+}
+
+/* Hover effect */
+.nav-menu li a:hover {
+  background: rgba(255, 76, 76, 0.2);
+  border-color: rgba(255, 76, 76, 0.5);
+  color: #ff4c4c;
+  box-shadow: 0 4px 16px rgba(255, 76, 76, 0.3);
+}
+
+
+.nav-menu li a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -2px;
+  background-color: #ff4c4c;
+  transition: width 0.3s ease;
+}
+
+
+.nav-menu li a:hover::after {
+  width: 100%;
+}
+
+
+/* Basic styling for the About section */
+.about-container {
+  padding: 3rem 1.5rem;
+  background: rgba(45, 45, 45, 0.6); /* Semi-transparent dark background */
+  backdrop-filter: blur(10px); /* Blur the content behind the background */
+  display: flex;
+  justify-content: center;
+  border-radius: 8px; /* Optional: rounded corners for a softer look */
+}
+
+.content-wrapper {
+  max-width: 800px;
+  text-align: center;
+  color: #F1F1F1; /* Light text color for better contrast */
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #00BFFF; /* Bright color for title */
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease-in-out;
+}
+
+.title:hover {
+  color: #FF6347; /* Change color on hover */
+}
+
+.description {
+  font-size: 1.125rem;
+  color: #B0C4DE; /* Light blue for description */
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  opacity: 0.85;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.description:hover {
+  opacity: 1;
+}
+
+.features {
+  margin-top: 2rem;
+}
+
+.features-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00FF7F; /* Vibrant green for the feature title */
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.feature-list {
+  list-style-type: disc;
+  padding-left: 2rem;
+  text-align: left;
+}
+
+.feature-item {
+  font-size: 1.125rem;
+  color: #F0E68C; /* Soft yellow for feature items */
+  margin-bottom: 0.75rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateX(5px); /* Slight movement to the right on hover */
+  color: #FF4500; /* Change color on hover */
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding: 0 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .features-title {
+    font-size: 1.25rem;
+  }
+
+  .feature-item {
+    font-size: 1rem;
+  }
+}

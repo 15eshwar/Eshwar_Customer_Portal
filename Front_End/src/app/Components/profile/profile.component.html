@@ -1,0 +1,30 @@
+<nav class="navbar">
+  <h1>Explore Your Profile</h1>
+  <ul class="nav-menu">
+    <li><a (click)="goBack()">Back</a></li>
+  </ul>
+</nav>
+
+<div class="profile-row">
+  <!-- LEFT: Banner Image -->
+  <div class="banner-img">
+    <img src="https://www.plantemoran.com/-/media/images/insights-images/2022/09/five-steps-to-drive-value-from-your-cloud-migrationgettyimages1319010510art.jpg" alt="Banner">
+  </div>
+
+  <!-- RIGHT: Customer Card -->
+  <div class="customer-card">
+    <div class="customer-header">
+      <img src="https://media.istockphoto.com/id/1397977173/vector/know-your-customer.jpg?s=612x612&w=0&k=20&c=Sd3lGgf9NIJVXxRCEVOkXGr9mcwCBu1LqqGDnKorRrg=" alt="Customer Image">
+      <div class="customer-name">
+        <h2>{{ customer.customerName }}</h2>
+        <span>ID: {{ customer.customerID }}</span>
+      </div>
+    </div>
+    <div class="customer-details">
+      <div class="detail"><strong>Street:</strong> {{ customer.street }}</div>
+      <div class="detail"><strong>City:</strong> {{ customer.city }}</div>
+      <div class="detail"><strong>Postal Code:</strong> {{ customer.postalCode }}</div>
+      <div class="detail"><strong>Country:</strong> {{ customer.country }}</div>
+    </div>
+  </div>
+</div>

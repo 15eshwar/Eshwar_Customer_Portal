@@ -1,0 +1,72 @@
+<nav class="navbar">
+  <h1>Explore Your Invoice Details</h1>
+  <ul class="nav-menu">
+    <li><a (click)="goBack()">Back</a></li>
+  </ul>
+</nav>
+
+<!-- Loading Spinner -->
+<div *ngIf="isLoading" class="loader">
+  <div class="spinner"></div>
+  <p>Fetching Data...</p>
+</div>
+<!-- No Data Message -->
+<div  *ngIf="noData && !isLoading" class="no-data-fancy">
+  <svg class="no-data-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="32" cy="32" r="30" stroke="#ff4c4c" fill="none"/>
+    <line x1="20" y1="20" x2="44" y2="44" stroke="#ff4c4c"/>
+    <line x1="44" y1="20" x2="20" y2="44" stroke="#ff4c4c"/>
+  </svg>
+  <h3>Oops! No data found.</h3>
+  <p>Looks like you have no Invoice Data yet.</p>
+  </div>
+
+<div *ngIf="!isLoading && records.length > 0" class="invoice-section">
+  <h2>Invoice </h2>
+<div class="table-wrapper">
+  <table class="invoice-table">
+     <thead>
+      <tr>
+         <th>Customer ID</th>
+         <th>Billing Document No</th>
+         <th>Billing Date</th>
+         <th>Billing Type</th>
+         <th>Document Condition No</th> 
+         <th>Billing Quantity</th>
+         <th>Material No</th>
+         <th>Net Value</th>
+         <th>Currency</th>
+         <th>Item No</th>
+         <th>Item Net Value</th>
+         <th>Pricing Date</th>
+         <th>Sales Organization</th>
+         <th>Sales Unit</th>
+         <th>Description</th>
+         <th>Download</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let invoice of records">
+  <td>{{ invoice.KUNAG }}</td>
+  <td>{{ invoice.VBELN }}</td>
+  <td>{{ invoice.FKDAT }}</td>
+  <td>{{ invoice.FKART }}</td>
+  <td>{{ invoice.KNUMV }}</td>
+  <td>{{ invoice.FKIMG }}</td>
+  <td>{{ invoice.MATNR }}</td>
+  <td>{{ invoice.NETWR }}</td>
+  <td>{{ invoice.WAERK }}</td>
+  <td>{{ invoice.POSNR }}</td>
+  <td>{{ invoice.ITEM_NETWR }}</td>
+  <td>{{ invoice.PRSDT }}</td>
+  <td>{{ invoice.VKORG }}</td>
+  <td>{{ invoice.VRKME }}</td>
+  <td>{{ invoice.ARKTX }}</td>
+  <td>
+  <button (click)="downloadPDF(invoice.VBELN)">Download PDF</button>
+  </td>
+</tr>
+
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,68 @@
+<nav class="navbar">
+  <h1>Explore Your List of Delivery</h1>
+  <ul class="nav-menu">
+    <li><a (click)="goBack()">Back</a></li>
+  </ul>
+</nav>
+
+<!-- Loading Spinner -->
+<div *ngIf="isLoading" class="loader">
+  <div class="spinner"></div>
+  <p>Fetching Data...</p>
+</div>
+<!-- No Data Message -->
+<div  *ngIf="noData && !isLoading" class="no-data-fancy">
+  <svg class="no-data-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="32" cy="32" r="30" stroke="#ff4c4c" fill="none"/>
+    <line x1="20" y1="20" x2="44" y2="44" stroke="#ff4c4c"/>
+    <line x1="44" y1="20" x2="20" y2="44" stroke="#ff4c4c"/>
+  </svg>
+  <h3>Oops! No data found.</h3>
+  <p>Looks like you have no List of Delivery yet.</p>
+  </div>
+
+<!-- Delivery Table -->
+<div *ngIf="!isLoading && deliveries.length > 0" class="delivery-section">
+  <h2>Delivery Details</h2>
+  <ng-container  >
+    <div class="table-wrapper">
+      <table class="delivery-table">
+        <thead>
+          <tr>
+            <th>Customer ID</th>
+            <th>Customer Name</th>
+            <th>Created By</th>
+            <th>Delivery No</th>
+            <th>Item No</th>
+            <th>Planned Delivery Date</th>
+            <th>Delivery Date</th>
+            <th>Actual Delivery Date</th>
+            <th>Material No</th>
+            <th>Delivery Type</th>
+            <th>Item Category</th>
+            <th>Plant (WERKS)</th>
+            <th>Shipping Point</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let delivery of deliveries">
+            <td>{{ delivery?.CUSTOMER_ID }}</td>
+            <td>{{ delivery.CUSTOMER_NAME }}</td>
+            <td>{{ delivery.OBJ_CREATED_BY }}</td>
+            <td>{{ delivery.DELIVERY_NO }}</td>
+            <td>{{ delivery.DELIVERY_ITEM_NO }}</td>
+            <td>{{ delivery.PLANNED_DEL_DATE }}</td>
+            <td>{{ delivery.DELIVERY_DATE }}</td>
+            <td>{{ delivery.ACTUAL_DEL_DATE }}</td>
+            <td>{{ delivery.MATERIAL_NO }}</td>
+            <td>{{ delivery.DELIVERY_TYPE }}</td>
+            <td>{{ delivery.ITEM_CATEGORY }}</td>
+            <td>{{ delivery.ITEM_PROSTO_AT.WERKS }}</td>
+            <td>{{ delivery.SHIPPING_POINT }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+</div>
+

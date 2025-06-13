@@ -1,0 +1,33 @@
+<nav class="navbar">
+  <h1>Explore Your Finance Sheet</h1>
+  <ul class="nav-menu">
+    <li><a (click)="goBack()">Back</a></li>
+  </ul>
+</nav>
+
+<!-- Main Containers Section -->
+<div class="main-sections">
+  <a class="container-box" routerLink="/profile">
+    <img class="box-image" src="https://cdn-icons-png.flaticon.com/512/8354/8354688.png">
+    <h2><a (click)="goInvoice()">Invoice details</a></h2>
+    <p>Find your personal details and preferences.</p>
+  </a>
+
+  <a class="container-box" routerLink="/dashboard">
+    <img src="https://cdn-icons-png.flaticon.com/512/5571/5571524.png" alt="Dashboard" class="box-image">
+    <h2><a (click)="goPA()"> Payments and aging</a></h2>
+    <p>Interactive dashboard showing user activity, services, and KPIs.</p>
+  </a>
+
+  <a class="container-box" routerLink="/financial-sheet">
+    <img src="https://cdn-icons-png.flaticon.com/512/1087/1087080.png" alt="Financial Sheet" class="box-image">
+    <h2><a (click)="goCDMEMO()">Credit/Debit memo</a></h2>
+    <p>Access billing history, payment details, and financial summary.</p>
+  </a>
+
+   <a class="container-box" routerLink="/financial-sheet">
+    <img src="https://png.pngtree.com/png-vector/20220518/ourmid/pngtree-sales-report-color-icon-vector-png-image_4660315.png" alt="Financial Sheet" class="box-image">
+    <h2><a (click)="goOSD()" >Overall sales data</a></h2>
+    <p>Access billing history, payment details, and financial summary.</p>
+  </a>
+</div>

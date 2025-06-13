@@ -1,0 +1,57 @@
+<nav class="navbar">
+  <h1>Welcome to Login Page</h1>
+  <ul class="nav-menu">
+  <li><a (click)="goWelcome()">Home</a></li>
+    <li><a (click)="goAbout()">About</a></li>
+    <li><a (click)="goContact()">Contact</a></li>
+    <li><a (click)=" goBack()">Back</a></li>
+  </ul>
+</nav>
+
+<div class="main-container">
+    <div class="left-container">
+        <div class="left-image">
+             <img src="https://imgs.search.brave.com/W1xc4n2oGx-M0a6P_EjSZ7S8yPDNuJD17Ob2F0OeNI0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMtcGxhdGZvcm0u/OTlzdGF0aWMuY29t/Ly9SNk5hNVpjaHRE/VVZ2aUNqa0NsVGhf/Qk12Q0U9LzQyOXg4/NjQ6MTAwNHgxNDM5/L2ZpdC1pbi81MDB4/NTAwLzk5ZGVzaWdu/cy1jb250ZXN0cy1h/dHRhY2htZW50cy8x/MjIvMTIyNDIxL2F0/dGFjaG1lbnRfMTIy/NDIxMzY0" alt="Kaar Logo" />
+        </div>
+        <h3  class="left-heading">CUSTOMER MESSAGE</h3>
+        <div  class="left-content">
+         <p>Your satisfaction is our priority. Access dedicated tools and services built for your business growth</p>
+        </div>
+    </div> 
+    <div class="login-container">
+     <form (ngSubmit)="login()" #loginForm="ngForm" novalidate>
+       <h2 class="form-title">Customer Login</h2>
+    <!-- Customer ID -->
+    <div class="form-group">
+      <label for="customerID">Customer ID</label>
+      <input
+        type="String"
+        id="customerID"
+        [(ngModel)]="customerID"
+        name="customerID"
+        required
+        #customerIDField="ngModel"
+        [class.invalid]="customerIDField.invalid && customerIDField.touched"/>
+       <small *ngIf="customerIDField.errors?.['required'] && customerIDField.touched" class="error-text">ID is required</small>
+    </div>
+       <div class="form-group">
+         <label for="password">Password</label>
+         <input
+           type="password"
+           id="password"
+           [(ngModel)]="password"
+           name="password"
+           required
+           #passwordField="ngModel"
+           [class.invalid]="passwordField.invalid && passwordField.touched"/>
+         <small *ngIf="passwordField.invalid && passwordField.touched" class="error-text">
+           Password is required
+         </small>
+       </div>
+       <button type="submit">Login</button>
+       <p class="error" *ngIf="showError">Invalid Customer ID or Password</p>
+       <h6>Don't have account? <a (click)="goSignUp()">Sign up</a> </h6>
+     </form>
+
+    </div>
+</div>

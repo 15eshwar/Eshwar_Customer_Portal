@@ -1,0 +1,71 @@
+<nav class="navbar">
+  <h1>Explore Your Overall Sales Data</h1>
+  <ul class="nav-menu">
+    <li><a (click)="goBack()">Back</a></li>
+  </ul>
+</nav>
+
+
+<!-- Loading Spinner -->
+<div *ngIf="isLoading" class="loader">
+  <div class="spinner"></div>
+  <p>Fetching Data...</p>
+</div>
+<!-- No Data Message -->
+<div  *ngIf="noData && !isLoading" class="no-data-fancy">
+  <svg class="no-data-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="32" cy="32" r="30" stroke="#ff4c4c" fill="none"/>
+    <line x1="20" y1="20" x2="44" y2="44" stroke="#ff4c4c"/>
+    <line x1="44" y1="20" x2="20" y2="44" stroke="#ff4c4c"/>
+  </svg>
+  <h3>Oops! No data found.</h3>
+  <p>Looks like you have no Overall Sales Data yet.</p>
+  </div>
+
+
+<!-- Over all Sales Table -->
+<div *ngIf="!isLoading && records.length > 0" class="delivery-section">
+  <h2>Overall Sales</h2>
+<div class="table-wrapper">
+  <table class="sales-data-table">
+    <thead>
+      <tr>
+        <th>CUSTOMER ID</th>
+        <th>CUSTOMER NAME</th>
+        <th>SALES DOC NO</th>
+        <th>MATERIAL NO</th>
+        <th>RECORD CREATION DATE</th>
+        <th>SALES UNIT</th>
+        <th>BILLING DATE</th>
+        <th>BILLING DOC NO</th>
+        <th>BILL CURRENCY</th>
+        <th>BILLING ITEM</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let items of records ">
+        <td>{{ items?.CUSTOMER_ID }}</td>
+        <td>{{ items.CUSTOMER_NAME }}</td>
+        <td>{{ items.SALES_DOC_NO }}</td>
+        <td>{{ items.MATERIAL_NO }}</td>
+        <td>{{ items.REC_CREATION_DATE }}</td>
+        <td>{{ items.SALES_UNIT }}</td>
+        <td>{{ items.BILLING_DATE }}</td>
+        <td>{{ items.BILLING_DOC_NO }}</td>
+        <td>{{ items.BILL_CURR }}</td>
+        <td>{{ items.BILLING_ITEM }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
