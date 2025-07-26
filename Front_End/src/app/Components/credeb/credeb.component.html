@@ -1,16 +1,37 @@
 <nav class="navbar">
-  <h1>Explore Your Overall Sales Data</h1>
+  <h1>Explore Your Credit/Debit values</h1>
   <ul class="nav-menu">
-    <li><a (click)="goBack()">Back</a></li>
+    <li><a (click)="goBack()">⬅️ Back</a></li>
   </ul>
 </nav>
 
-<!-- Loading Spinner -->
+<div class="filter-sort-wrapper">
+  <div class="filter-sort-controls">
+    <h3>Filter By :</h3>
+    <input type="text" [(ngModel)]="filterText" placeholder="Document No, Date, Billing Type, Material" />
+
+    <h3>Sort By :</h3>
+    <select [(ngModel)]="sortColumn">
+      <option value="DOCUMENT_NO">Document No</option>
+      <option value="DOC_DATE">Documented Date</option>
+      <option value="AMOUNT">Amount</option>
+      <option value="ENTRY_TIME">Entry Time</option>
+      <option value="MATERIAL_NO">Material No</option>
+      <option value="BILL_ITEM">Billing Item No</option>
+    </select>
+
+    <button (click)="toggleSortOrder()">
+      Sort: {{ sortOrder === 'asc' ? '⬆️ Ascending' : '⬇️ Descending' }}
+    </button>
+  </div>
+</div>
+
+
 <div *ngIf="isLoading" class="loader">
   <div class="spinner"></div>
   <p>Fetching Data...</p>
 </div>
-<!-- No Data Message -->
+
 <div  *ngIf="noData && !isLoading" class="no-data-fancy">
   <svg class="no-data-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="32" cy="32" r="30" stroke="#ff4c4c" fill="none"/>
@@ -21,45 +42,35 @@
   <p>Looks like you have no Tansaction Data yet.</p>
   </div>
 
-<div *ngIf="!isLoading && creditMemos.length > 0" class="credit-memo-section">
-  <h2>Credit Memos</h2>
+<div *ngIf="!isLoading && filteredAndSortedCreditMemos.length > 0" class="credit-memo-section">
+  <h2>Credit and Debit Memos</h2>
   <div class="table-wrapper">
     <table class="credit-memo-table">
       <thead>
         <tr>
           <th>Document No</th>
-          <th>Document Date</th>
+          <th>Documented Date</th>
           <th>Billing Type</th>
-          <th>Currency</th>
-          <th>Customer No</th>
-          <th>Sales Org</th>
           <th>Amount</th>
-          <th>Created By</th>
-          <th>Created On</th>
+          <th>Currency</th>
           <th>Entry Time</th>
-          <th>Sold To Party</th>
-          <th>Sales Order</th>
           <th>Material No</th>
-          <th>Billing Item</th>
+          <th>Billing Item No</th>
+          <th>Material </th>
           <th>Sales Unit</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let memo of creditMemos">
-          <td>{{ memo.DOCUMENT_NO }}</td>
-          <td>{{ memo.DOC_DATE }}</td>
+        <tr *ngFor="let memo of filteredAndSortedCreditMemos">
+          <td>{{ removeLeadingZeros(memo.DOCUMENT_NO) }}</td>
+          <td>{{ formatDateToDMY(memo.DOC_DATE) }}</td>
           <td>{{ memo.BILL_TYPE }}</td>
-          <td>{{ memo.CURRENCY }}</td>
-          <td>{{ memo.CUSTOMER_NO }}</td>
-          <td>{{ memo.SALES_ORG }}</td>
           <td>{{ memo.AMOUNT }}</td>
-          <td>{{ memo.CREATED_BY }}</td>
-          <td>{{ memo.CREATED_ON }}</td>
+          <td>{{ memo.CURRENCY }}</td>
           <td>{{ memo.ENTRY_TIME }}</td>
-          <td>{{ memo.SOLD_TO_PARTY }}</td>
-          <td>{{ memo.SALES_ORDR }}</td>
-          <td>{{ memo.MATERIAL_NO }}</td>
-          <td>{{ memo.BILL_ITEM }}</td>
+          <td>{{ removeLeadingZeros(memo.MATERIAL_NO) }}</td>
+          <td>{{ removeLeadingZeros(memo.BILL_ITEM) }}</td>
+           <td>{{ memo.SALES_ORDR }}</td>
           <td>{{ memo.SALES_UNIT }}</td>
         </tr>
       </tbody>

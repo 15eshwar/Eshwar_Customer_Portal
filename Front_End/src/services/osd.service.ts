@@ -22,7 +22,6 @@ export interface OverallSalesData {
 
 export class OsdService {
 
-
   constructor(private http: HttpClient) {}
 
   getOsd(customerID: string): Observable<{ records : OverallSalesData [] }> {

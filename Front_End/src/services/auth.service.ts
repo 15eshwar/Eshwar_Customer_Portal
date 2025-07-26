@@ -10,16 +10,19 @@ message: string;
 @Injectable({
 providedIn: 'root',
 })
+
 export class AuthService {
-    private apiUrl = 'http://localhost:3000/api/auth';
 
     constructor(private http: HttpClient) {}
 
     login(customerID: string, password: string):
     Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, {
+    return this.http.post<LoginResponse>(`http://localhost:3000/api/auth/login`, {
     customerID,
     password,
     });
 }  
 }
+
+
+

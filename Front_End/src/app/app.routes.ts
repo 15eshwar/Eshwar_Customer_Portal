@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './Components/login/login.component';
 import { HomeComponent } from './Components/home/home.component';
-import { AboutComponent } from './Components/about/about.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { WelcomeComponent } from './Components/welcome/welcome.component';
 import { IntelProfileComponent } from './Components/intel-profile/intel-profile.component';
@@ -13,7 +12,6 @@ import { OsdComponent } from './Components/osd/osd.component';
 import { CredebComponent } from './Components/credeb/credeb.component';
 import { PayageComponent } from './Components/payage/payage.component';
 import { InvoiceComponent } from './Components/invoice/invoice.component';
-
 
 export const routes: Routes = [
 //Default Routing
@@ -33,10 +31,6 @@ pathMatch:'full'
 {
     path:'login',
     component:LoginComponent
-},
-{
-    path:'about',
-    component:AboutComponent
 },
 {
     path:'profile',

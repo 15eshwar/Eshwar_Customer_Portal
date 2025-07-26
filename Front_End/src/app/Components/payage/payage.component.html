@@ -1,17 +1,36 @@
 <nav class="navbar">
-  <h1>Explore Your Payment and aging</h1>
+  <h1>Explore Your Payments and aging</h1>
   <ul class="nav-menu">
-    <li><a (click)="goBack()">Back</a></li>
+    <li><a (click)="goBack()">⬅️ Back</a></li>
   </ul>
 </nav>
 
-<!-- Loading Spinner -->
+<div class="filter-sort-wrapper">
+  <div class="filter-sort-controls">
+    <h3>Filter By :</h3>
+    <input type="text" [(ngModel)]="filterText" placeholder="Doc No, Invoice Date, Due Date, Currency, Aging" />
+
+    <h3>Sort By :</h3>
+    <select [(ngModel)]="sortColumn">
+      <option value="VBELN">Billing Doc No</option>
+      <option value="FKDAT">Invoice Date</option>
+      <option value="DUE_DATE">Due Date</option>
+      <option value="NETWR">Amount</option>
+      <option value="AGING_DAYS">Aging Days</option>
+    </select>
+
+    <button (click)="toggleSortOrder()">
+      Sort: {{ sortOrder === 'asc' ? '⬆️ Ascending' : '⬇️ Descending' }}
+    </button>
+  </div>
+</div>
+
 <div *ngIf="isLoading" class="loader">
   <div class="spinner"></div>
   <p>Fetching Data...</p>
 </div>
-<!-- No Data Message -->
-<div  *ngIf="noData && !isLoading" class="no-data-fancy">
+
+<div *ngIf="noData && !isLoading" class="no-data-fancy">
   <svg class="no-data-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="32" cy="32" r="30" stroke="#ff4c4c" fill="none"/>
     <line x1="20" y1="20" x2="44" y2="44" stroke="#ff4c4c"/>
@@ -19,15 +38,15 @@
   </svg>
   <h3>Oops! No data found.</h3>
   <p>Looks like you have no Payment and Aging Data yet.</p>
-  </div>
+</div>
 
-<div *ngIf="!isLoading && payAgeData.length > 0" class="payage-section">
+<div *ngIf="!isLoading && filteredAndSortedPayAgeData.length > 0" class="payage-section">
   <h2>Payment and Aging Data</h2>
-  <div class="table-wrapper" >
+  <div class="table-wrapper">
     <table class="payage-table">
       <thead>
         <tr>
-          <th>VBELN</th>
+          <th>Billing Doc No</th>
           <th>Invoice Date</th>
           <th>Due Date</th>
           <th>Amount</th>
@@ -37,10 +56,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of payAgeData">
-          <td>{{ item.VBELN }}</td>
-          <td>{{ item.FKDAT }}</td>
-          <td>{{ item.DUE_DATE }}</td>
+        <tr *ngFor="let item of filteredAndSortedPayAgeData">
+          <td>{{ removeLeadingZeros(item.VBELN) }}</td>
+          <td>{{ formatDateToDMY(item.FKDAT) }}</td>
+          <td>{{ formatDateToDMY(item.DUE_DATE) }}</td>
           <td>{{ item.NETWR }}</td>
           <td>{{ item.WAERK }}</td>
           <td>{{ item.AGING }}</td>

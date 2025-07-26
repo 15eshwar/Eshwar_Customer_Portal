@@ -11,18 +11,13 @@ import { Router } from '@angular/router';
 export class WelcomeComponent {
 
 constructor(private router: Router) {}
+
  goWelcome() {
     this.router.navigate(['/welcome']);
   }
-
   goLogin() {
     this.router.navigate(['/login']);
   }
-
-  goAbout() {
-    this.router.navigate(['/about']);
-  }
-
   goContact() {
     this.router.navigate(['/contact']);
   }

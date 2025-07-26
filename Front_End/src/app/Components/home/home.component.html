@@ -1,10 +1,9 @@
 <nav  class="navbar">
   <h1>Dashboard</h1>
   <ul class="nav-menu">
-    <li><a (click)="goWelcome()">Home</a></li>
-    <li><a (click)="goAbout()">About</a></li>
-    <li><a (click)="goContact()">Contact</a></li>
-    <!-- Profile Icon + Dropdown -->
+  <li><a (click)="goWelcome()">🏠 Home</a></li>
+    <li><a >💡 About</a></li>
+    <li><a (click)="goContact()">📞 Contact</a></li>
     <div class="profile-dropdown" (click)="Dropdown()">
       <img 
         src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" 
@@ -21,23 +20,22 @@
   </ul>
 </nav>
 
-<!-- Main Containers Section -->
 <div class="main-sections">
-  <a class="container-box" routerLink="/profile">
+  <a class="container-box" routerLink="/profile"  (click)="goProfile()">
     <img class="box-image" src="https://cdn-icons-png.flaticon.com/512/10485/10485137.png">
-    <h2><a (click)="goProfile()">Customer Profile</a></h2>
+    <h2><a>Customer Profile</a></h2>
     <p>Find your personal details and preferences.</p>
   </a>
 
-  <a class="container-box" routerLink="/dashboard">
+  <a class="container-box" routerLink="/dashboard" (click)="goIntelligence()">
     <img src="https://cdn-icons-png.flaticon.com/512/10397/10397513.png" alt="Dashboard" class="box-image">
-    <h2><a (click)="goIntelligence()" >Customer Intelligence</a></h2>
+    <h2><a>Customer Intelligence</a></h2>
     <p>Interactive dashboard showing user activity, services, and KPIs.</p>
   </a>
 
-  <a class="container-box" routerLink="/financial-sheet">
+  <a class="container-box" routerLink="/financial-sheet" (click)="goFinanceSheet()">
     <img src="https://cdn3.iconfinder.com/data/icons/banking-and-finance-1-23/66/45-512.png" alt="Financial Sheet" class="box-image">
-    <h2><a (click)="goFinanceSheet()">Customer Financial Sheet</a></h2>
+    <h2><a >Customer Financial Sheet</a></h2>
     <p>Access billing history, payment details, and financial summary.</p>
   </a>
 </div>

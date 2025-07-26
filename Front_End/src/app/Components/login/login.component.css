@@ -1,13 +1,8 @@
-
-
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-
-/* === Navbar Styling === */
 .navbar {
   padding: 30px 60px;
   display: flex;
@@ -20,8 +15,6 @@
   top: 0;
   z-index: 1000;
 }
-
-/* Navbar Title */
 .navbar h1 {
   color: #ffffff;
   font-size: 26px;
@@ -31,8 +24,6 @@
     margin: 0;
   padding: 0;
 }
-
-/* Navbar Menu */
 .nav-menu {
   list-style: none;
   display: flex;
@@ -40,8 +31,6 @@
   margin: 0;
   padding: 0;
 }
-
-
 .nav-menu li a {
   position: relative;
   color: #ffffff;
@@ -57,16 +46,12 @@
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
    cursor: pointer;
 }
-
-/* Hover effect */
 .nav-menu li a:hover {
   background: rgba(255, 76, 76, 0.2);
   border-color: rgba(255, 76, 76, 0.5);
   color: #ff4c4c;
   box-shadow: 0 4px 16px rgba(255, 76, 76, 0.3);
 }
-
-
 .nav-menu li a::after {
   content: '';
   position: absolute;
@@ -77,8 +62,6 @@
   background-color: #ff4c4c;
   transition: width 0.3s ease;
 }
-
-
 .nav-menu li a:hover::after {
   width: 100%;
 }
@@ -89,13 +72,12 @@
   padding-bottom: 2%;
 text-align: center;
 }
-
 .main-container {
   display: flex;
-  flex-direction: row; /* horizontal layout */
-  align-items: center;  /* vertical alignment */
-  justify-content: space-evenly; /* spacing between */
-  height: 80vh; /* full screen height */
+  flex-direction: row; 
+  align-items: center; 
+  justify-content: space-evenly; 
+  height: 80vh; 
 }
 .left-container {
   padding: 60px;
@@ -107,7 +89,6 @@ text-align: center;
   flex-direction: column;
 
 }
-
 .left-image img {
   width: 80px;
   height: 80px;
@@ -137,22 +118,18 @@ form {
   background-repeat: no-repeat;
   padding: 30px;
 }
-
 .form-title {
   text-align: center;
   margin-bottom: 1rem;
-  color: #6beeff; /* Light blue color for title */
+  color: #6beeff; 
   font-weight: 600;
 }
-
 .form-group {
   display: flex;
   flex-direction: column;
   color: #ffffff;
   gap: 0.5rem;
 }
-
-
 input {
   padding: 12px;
   border: 1px solid #0c4a73;
@@ -160,33 +137,28 @@ input {
   font-size: 1rem;
   transition: border-color 0.3s ease;
 }
-
 input.invalid {
-  border-color: #ff5252; /* Red border on invalid input */
+  border-color: #ff5252; 
 }
-
 .error-text {
-  color: #ff5252; /* Red color for error messages */
+  color: #ff5252; 
   font-size: 0.8rem;
   margin-top: 4px;
 }
-
 .login-container h6{
 text-align: center;
 font-style: italic;
 font-size: medium;
 }
-
 .login-container h6 a{
 cursor: pointer;
 }
 .login-container h6 a:hover {
   color: #ff4c4c;
 }
-
 button {
   padding: 12px;
-  background: #0072ff; /* Blue button */
+  background: #0072ff; 
   color: white;
   font-size: 1rem;
   font-weight: bold;
@@ -195,14 +167,12 @@ button {
   cursor: pointer;
   transition: background 0.3s ease;
 }
-
 button:disabled {
   background-color: #aaa;
   cursor: not-allowed;
 }
-
 .error {
-  color: #d32f2f; /* Dark red for general errors */
+  color: #d32f2f; 
   text-align: center;
   font-weight: 500;
 }

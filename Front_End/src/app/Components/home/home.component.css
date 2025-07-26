@@ -1,10 +1,8 @@
-/* === Global Reset === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-/* === Navbar Styling === */
 .navbar {
   padding: 30px 60px;
   display: flex;
@@ -18,8 +16,6 @@
   top: 0;
   z-index: 1000;
 }
-
-/* Navbar Title */
 .navbar h1 {
   color: #ffffff;
   font-size: 26px;
@@ -29,15 +25,11 @@
     margin: 0;
   padding: 0;
 }
-
-/* Right side: nav-menu + profile icon */
 .navbar-right {
   display: flex;
   align-items: center;
   gap: 20px;
 }
-
-/* Navbar Menu */
 .nav-menu {
   list-style: none;
   display: flex;
@@ -45,7 +37,6 @@
   margin: 0;
   padding: 0;
 }
-
 .nav-menu li a {
   position: relative;
   color: #ffffff;
@@ -61,15 +52,12 @@
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
    cursor: pointer;
 }
-
-/* Hover effect */
 .nav-menu li a:hover {
   background: rgba(255, 76, 76, 0.2);
   border-color: rgba(255, 76, 76, 0.5);
   color: #ff4c4c;
   box-shadow: 0 4px 16px rgba(255, 76, 76, 0.3);
 }
-
 .nav-menu li a::after {
   content: '';
   position: absolute;
@@ -80,13 +68,14 @@
   background-color: #ff4c4c;
   transition: width 0.3s ease;
 }
-
-
 .nav-menu li a:hover::after {
   width: 100%;
 }
+.navbar.scrolled {
+  background: linear-gradient(to right, #2c3e50, #3498db);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
 
-/* Profile Icon */
 .profile-icon {
   width: 35px;
   height: 35px;
@@ -94,16 +83,13 @@
   cursor: pointer;
   transition: transform 0.2s ease;
 }
-
 .profile-icon:hover {
   transform: scale(1.1);
 }
-
 .profile-dropdown {
   position: relative;
   cursor: pointer;
 }
-
 .dropdown-menu {
   position: absolute;
   top: 45px;
@@ -118,35 +104,29 @@
   z-index: 999;
   overflow: hidden;
 }
-
 .dropdown-menu li {
   padding: 10px 15px;
   color: #333;
   cursor: pointer;
   transition: background 0.3s ease;
 }
-
 .dropdown-menu li:hover {
   background-color: #f0f0f0;
 }
 
-/* === Main Container Sections: 1 Row, 3 Boxes === */
 .main-sections {
   display: flex;
-  flex-direction: row;       /* Horizontal layout */
+  flex-direction: row;       
   justify-content: space-between;
   gap: 30px;
   padding: 50px 60px;
-  flex-wrap: wrap;           /* Wrap on smaller screens */
+  flex-wrap: wrap;     
   color: white;
  justify-content: center;
-
 }
-
-/* === Individual Boxes === */
 .container-box {
-  flex: 1;                                 /* Equal width */
-  min-width: 280px;                        /* Prevents shrinkage on small screens */
+  flex: 1;                                 
+  min-width: 280px;                       
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 25px 30px;
@@ -154,34 +134,25 @@
   backdrop-filter: blur(5px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
+    cursor: pointer;
 }
 .box-image {
-  width: 200px;             /* consistent size */
+  width: 200px;            
   height: 200px;
-  object-fit: cover;        /* better cropping/fill */
+  object-fit: cover;       
   display: block;
-  margin: 0 auto 20px auto; /* centered and spaced */
-  border-radius: 8px;       /* optional: adds rounded corners */
+  margin: 0 auto 20px auto; 
+  border-radius: 8px;       
 }
-
 .container-box:hover {
   transform: translateY(-3px);
 }
-
 .container-box h2 {
-  cursor: pointer;
   margin-bottom: 12px;
   font-size: 24px;
   color: #ffcc00;
 }
-
 .container-box p {
   font-size: 16px;
   color: #f0f0f0;
-}
-
-/* When scrolled */
-.navbar.scrolled {
-  background: linear-gradient(to right, #2c3e50, #3498db);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }

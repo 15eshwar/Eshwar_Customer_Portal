@@ -1,33 +1,47 @@
 <nav class="navbar">
   <h1>Explore Your Inquiry Data</h1>
   <ul class="nav-menu">
-    <li><a (click)="goBack()">Back</a></li>
+    <li><a (click)="goBack()">⬅️ Back</a></li>
   </ul>
 </nav>
 
+<div class="filter-sort-wrapper">
+  <div class="filter-sort-controls">
+    <h3>Filter By :</h3>
+    <input type="text" [(ngModel)]="filterText" placeholder="Material, Doc No, Date" />
+     <h3>Sort By :</h3>
+    <select [(ngModel)]="sortColumn">
+      <option value="SALES_DOC_NO">Doc No</option>
+      <option value="INQUIRY_DATE">Inquiry Date</option>
+      <option value="MATERIAL_NO">Material No</option>
+      <option value="REQUESTED_QUAN">Quantity</option>
+    </select>
+    <button (click)="toggleSortOrder()">
+      Sort: {{ sortOrder === 'asc' ? '⬆️ Ascending' : '⬇️ Descending' }}
+    </button>
+  </div>
+</div>
 
-<!-- Loading Spinner -->
 <div *ngIf="isLoading" class="loader">
   <div class="spinner"></div>
   <p>Fetching Data...</p>
 </div>
-<!-- No Data Message -->
-<div  *ngIf="noData && !isLoading" class="no-data-fancy">
+
+<div *ngIf="noData && !isLoading" class="no-data-fancy">
   <svg class="no-data-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="32" cy="32" r="30" stroke="#ff4c4c" fill="none"/>
-    <line x1="20" y1="20" x2="44" y2="44" stroke="#ff4c4c"/>
-    <line x1="44" y1="20" x2="20" y2="44" stroke="#ff4c4c"/>
+    <circle cx="32" cy="32" r="30" stroke="#ff4c4c" fill="none" />
+    <line x1="20" y1="20" x2="44" y2="44" stroke="#ff4c4c" />
+    <line x1="44" y1="20" x2="20" y2="44" stroke="#ff4c4c" />
   </svg>
   <h3>Oops! No data found.</h3>
   <p>Looks like you have no Inquiry Data yet.</p>
-  </div>
+</div>
 
-<!-- Inquiry Table -->
-<div *ngIf="!isLoading && inquiries.length > 0" class="inquiry-section">
+<div *ngIf="!isLoading && filteredAndSortedInquiries.length > 0" class="inquiry-section">
   <h2>Customer Inquiries</h2>
   <ng-container>
-    <div  class="table-wrapper">
-      <table  class="inquiry-table">
+    <div class="table-wrapper">
+      <table class="inquiry-table">
         <thead>
           <tr>
             <th>Doc No</th>
@@ -36,18 +50,16 @@
             <th>Material</th>
             <th>Requested Quantity</th>
             <th>Sales Unit</th>
-            <th>Currency</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let inquiry of inquiries">
-            <td>{{ inquiry.SALES_DOC_NO }}</td>
-            <td>{{ inquiry.INQUIRY_DATE }}</td>
-            <td>{{ inquiry.MATERIAL_NO }}</td>
+          <tr *ngFor="let inquiry of filteredAndSortedInquiries">
+            <td>{{ removeLeadingZeros(inquiry.SALES_DOC_NO) }}</td>
+            <td>{{ formatDateToDMY(inquiry.INQUIRY_DATE) }}</td>
+            <td>{{ removeLeadingZeros(inquiry.MATERIAL_NO) }}</td>
             <td>{{ inquiry.MATERIAL_DESCRIPT }}</td>
             <td>{{ inquiry.REQUESTED_QUAN }}</td>
             <td>{{ inquiry.SALES_UNIT }}</td>
-            <td>{{ inquiry.SD_DOC_CURR }}</td>
           </tr>
         </tbody>
       </table>

@@ -1,27 +1,26 @@
 <nav class="navbar">
   <h1>Explore Your Intelligence</h1>
   <ul class="nav-menu">
-    <li><a (click)="goBack()">Back</a></li>
+    <li><a (click)="goBack()">⬅️ Back</a></li>
   </ul>
 </nav>
 
-<!-- Main Containers Section -->
 <div class="main-sections">
-  <a class="container-box" routerLink="/profile">
+  <a class="container-box" routerLink="/profile" (click)="goDataInquiry()">
     <img class="box-image" src="https://cdn-icons-png.freepik.com/256/12236/12236855.png?semt=ais_incoming">
-    <h2><a (click)="goDataInquiry()">Inquiry Data</a></h2>
-    <p>Find your personal details and preferences.</p>
+    <h2>Inquiry Data</h2>
+    <p>Find your Inquiry data.</p>
   </a>
 
-  <a class="container-box" routerLink="/dashboard">
+  <a class="container-box" routerLink="/dashboard" (click)="goSalesOrder()">
     <img src="https://cdn-icons-png.freepik.com/256/3045/3045670.png" alt="Dashboard" class="box-image">
-    <h2><a (click)="goSalesOrder()" >Sales Order Data</a></h2>
-    <p>Interactive dashboard showing user activity, services, and KPIs.</p>
+    <h2>Sales Order Data</h2>
+    <p>Find your Sales order details.</p>
   </a>
 
-  <a class="container-box" routerLink="/financial-sheet">
+  <a class="container-box" routerLink="/financial-sheet" (click)="goLOD()">
     <img src="https://cdn-icons-png.flaticon.com/512/2728/2728447.png" alt="Financial Sheet" class="box-image">
-    <h2><a (click)="goLOD()">List of Delivery</a></h2>
-    <p>Access billing history, payment details, and financial summary.</p>
+    <h2>List of Delivery</h2>
+    <p>List of the Delivered items.</p>
   </a>
 </div>

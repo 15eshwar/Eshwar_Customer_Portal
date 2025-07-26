@@ -60,13 +60,20 @@ router.post('/pay-age-data', (req, res) => {
           return res.status(404).json({ message: 'No PAY_AGE_DATA found for this customer.' });
         }
 
-        // Normalize response (in case it's a single item, make it an array)
-        const items = Array.isArray(payAgeData) ? payAgeData : [payAgeData];
+       const items = Array.isArray(payAgeData) ? payAgeData : [payAgeData];
 
-        return res.status(200).json({
-          customerID,
-          payAgeData: items,
-        });
+         const processedItems = items.map(item => {
+           return {
+             ...item,
+             AGING_DAYS: parseFloat(item.AGING_DAYS) < 0 ? "0" : item.AGING_DAYS 
+           };
+         });
+
+         return res.status(200).json({
+           customerID,
+           payAgeData: processedItems,
+         });
+         
 
       } catch (ex) {
         console.error('Exception while parsing SOAP response:', ex);

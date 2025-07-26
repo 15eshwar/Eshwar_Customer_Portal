@@ -1,10 +1,9 @@
-/* === Global Reset === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-/* === Navbar Styling === */
+
 .navbar {
   padding: 30px 60px;
   display: flex;
@@ -18,31 +17,24 @@
   z-index: 1000;
 }
 
-/* Navbar Title */
 .navbar h1 {
   color: #ffffff;
   font-size: 26px;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  margin: 0;
-  padding: 0;
 }
 
-/* Right side: nav-menu + profile icon */
 .navbar-right {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-/* Navbar Menu */
 .nav-menu {
   list-style: none;
   display: flex;
   gap: 35px;
-  margin: 0;
-  padding: 0;
 }
 
 .nav-menu li a {
@@ -58,16 +50,14 @@
   backdrop-filter: blur(8px);
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
-   cursor: pointer;
+  cursor: pointer;
 }
 
-/* Hover effect */
 .nav-menu li a:hover {
   background: rgba(255, 76, 76, 0.2);
   border-color: rgba(255, 76, 76, 0.5);
   color: #ff4c4c;
   box-shadow: 0 4px 16px rgba(255, 76, 76, 0.3);
- 
 }
 
 .nav-menu li a::after {
@@ -83,9 +73,67 @@
 
 .nav-menu li a:hover::after {
   width: 100%;
-
-
 }
+
+.filter-sort-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.filter-sort-controls {
+  padding: 1rem;
+  border-radius: 0.75rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #7a7ae6;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.filter-sort-controls input[type="text"],
+.filter-sort-controls select {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  outline: none;
+  background-color: #fff;
+  flex: 1 1 auto;
+  transition: border;
+}
+
+.filter-sort-controls input[type="text"] {
+  min-width: 400px;
+  max-width: 500px;
+}
+
+.filter-sort-controls select {
+  max-width: 500px;
+}
+
+.filter-sort-controls input[type="text"]:focus,
+.filter-sort-controls select:focus {
+  border-color: #a6c4f3;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.filter-sort-controls button {
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  border: none;
+  background-color: #09234d;
+  color: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.filter-sort-controls button:hover {
+  background-color: #0d3677;
+}
+
 .sales-order-section {
   padding: 30px;
   border-radius: 16px;
@@ -135,18 +183,16 @@
 .sales-order-table tbody tr:hover {
   background-color: #4c749c;
   cursor: pointer;
-   width: 100%;
+  width: 100%;
 }
 
-
-/* Centering Loader and No Data Message */
 .loader {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60vh; /* Takes 60% of the screen height */
+  height: 60vh;
   font-size: 20px;
-  color: #3b82f6; /* Loader color */
+  color: #3b82f6;
   text-align: center;
 }
 
@@ -160,13 +206,11 @@
   margin-bottom: 10px;
 }
 
-
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
 }
-
 
 .no-data-fancy {
   display: flex;
@@ -206,7 +250,6 @@
   animation: rotate 4s linear infinite;
 }
 
-/* Animations */
 @keyframes pulse {
   0%, 100% {
     box-shadow: 0 8px 20px rgba(255, 76, 76, 0.2);

@@ -84,6 +84,57 @@
   width: 100%;
 }
 
+.filter-sort-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.filter-sort-controls {
+  padding: 1rem;
+  border-radius: 0.75rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  background-color:  #7a7ae6;
+}
+
+.filter-sort-controls input[type="text"],
+.filter-sort-controls select {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  outline: none;
+  background-color: #fff;
+  transition: border ;
+  flex: 1 1 auto;        
+  max-width: 300px;        
+}
+
+.filter-sort-controls input[type="text"]:focus,
+.filter-sort-controls select:focus {
+  border-color: #a6c4f3;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.filter-sort-controls button {
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  border: none;
+  background-color: #09234d;
+  color: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.filter-sort-controls button:hover {
+  background-color:  #0d3677;
+}
+
 .inquiry-section {
   padding: 30px;
   border-radius: 16px;

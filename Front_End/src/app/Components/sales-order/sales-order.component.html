@@ -1,16 +1,37 @@
 <nav class="navbar">
   <h1>Explore Your Sales Order Data</h1>
   <ul class="nav-menu">
-    <li><a (click)="goBack()">Back</a></li>
+    <li><a (click)="goBack()">⬅️ Back</a></li>
   </ul>
 </nav>
 
-<!-- Loading Spinner -->
+<div class="filter-sort-wrapper">
+  <div class="filter-sort-controls">
+    <h3>Filter By :</h3>
+    <input type="text" [(ngModel)]="filterText" placeholder="Order Date, Material, Delivery Status, Unit, Currency" />
+    <h3>Sort By :</h3>
+    <select [(ngModel)]="sortColumn" >
+      <option value="SALES_OR_NO">Sales Order No</option>
+      <option value="SALES_OR_DATE">Order Date</option>
+      <option value="MATERIAL_NO">Material No</option>
+      <option value="MATERIAL_DESCRIPT">Material Description</option>
+      <option value="ORDER_QTY">Order Quantity</option>
+      <option value="SALES_DOC_ITEM_NO">Item No</option>
+      <option value="CONFIRMED_QTY">Confirmed Quantity</option>
+      <option value="DELIVERY_DATE">Delivery Date</option>
+      <option value="PRICE_COND_AMNT">Price Amount</option>
+    </select>
+    <button (click)="toggleSortOrder()">
+      Sort: {{ sortOrder === 'asc' ? '⬆️ Ascending' : '⬇️ Descending' }}
+    </button>
+  </div>
+</div>
+
 <div *ngIf="isLoading" class="loader">
   <div class="spinner"></div>
   <p>Fetching Data...</p>
 </div>
-<!-- No Data Message -->
+
 <div  *ngIf="noData && !isLoading" class="no-data-fancy">
   <svg class="no-data-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="32" cy="32" r="30" stroke="#ff4c4c" fill="none"/>
@@ -19,18 +40,15 @@
   </svg>
   <h3>Oops! No data found.</h3>
   <p>Looks like you have no Sales Order Data yet.</p>
-  </div>
+</div>
 
-<!-- Sales Order Table -->
-<div *ngIf="!isLoading && SalesOrders.length > 0" class="sales-order-section">
+<div *ngIf="!isLoading && filteredAndSortedSalesOrders.length > 0" class="sales-order-section">
   <h2>Sales Orders</h2>
   <ng-container>
     <div class="table-wrapper">
       <table class="sales-order-table">
         <thead>
           <tr>
-            <th>Customer ID</th>
-            <th>Customer Name</th>
             <th>Sales Order No</th>
             <th>Order Date</th>
             <th>Document Type</th>
@@ -44,29 +62,25 @@
             <th>Confirmed Quantity</th>
             <th>Delivery Date</th>
             <th>Price Amount</th>
-            <th>Price Value</th>
             <th>Overall Status</th>
             <th>Delivery Status</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let order of SalesOrders">
-            <td>{{ order.CUSTOMER_ID }}</td>
-            <td>{{ order.CUSTOMER_NAME }}</td>
-            <td>{{ order.SALES_OR_NO }}</td>
-            <td>{{ order.SALES_OR_DATE }}</td>
+          <tr *ngFor="let order of filteredAndSortedSalesOrders">
+            <td>{{ removeLeadingZeros(order.SALES_OR_NO) }}</td>
+            <td>{{ formatDateToDMY(order.SALES_OR_DATE) }}</td>
             <td>{{ order.SALES_DOC_TYPE }}</td>
-            <td>{{ order.MATERIAL_NO }}</td>
+            <td>{{ removeLeadingZeros(order.MATERIAL_NO ) }}</td>
             <td>{{ order.MATERIAL_DESCRIPT }}</td>
             <td>{{ order.ORDER_QTY }}</td>
             <td>{{ order.SALES_UNIT }}</td>
             <td>{{ order.SALES_ORG }}</td>
             <td>{{ order.SD_DOC_CURR }}</td>
-            <td>{{ order.SALES_DOC_ITEM_NO }}</td>
+            <td>{{ removeLeadingZeros(order.SALES_DOC_ITEM_NO) }}</td>
             <td>{{ order.CONFIRMED_QTY }}</td>
-            <td>{{ order.DELIVERY_DATE }}</td>
+            <td>{{ formatDateToDMY(order.DELIVERY_DATE) }}</td>
             <td>{{ order.PRICE_COND_AMNT }}</td>
-            <td>{{ order.PRICE_COND_VAL }}</td>
             <td>{{ order.OVERALL_STATUS }}</td>
             <td>{{ order.DELIVERY_STATUS }}</td>
           </tr>

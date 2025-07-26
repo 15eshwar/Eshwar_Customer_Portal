@@ -1,33 +1,32 @@
 <nav class="navbar">
   <h1>Explore Your Finance Sheet</h1>
   <ul class="nav-menu">
-    <li><a (click)="goBack()">Back</a></li>
+    <li><a (click)="goBack()">⬅️ Back</a></li>
   </ul>
 </nav>
 
-<!-- Main Containers Section -->
 <div class="main-sections">
-  <a class="container-box" routerLink="/profile">
+  <a class="container-box" routerLink="/profile" (click)="goInvoice()">
     <img class="box-image" src="https://cdn-icons-png.flaticon.com/512/8354/8354688.png">
-    <h2><a (click)="goInvoice()">Invoice details</a></h2>
-    <p>Find your personal details and preferences.</p>
+    <h2>Invoice details</h2>
+    <p>Download your invoices.</p>
   </a>
 
-  <a class="container-box" routerLink="/dashboard">
+  <a class="container-box" routerLink="/dashboard" (click)="goPA()">
     <img src="https://cdn-icons-png.flaticon.com/512/5571/5571524.png" alt="Dashboard" class="box-image">
-    <h2><a (click)="goPA()"> Payments and aging</a></h2>
-    <p>Interactive dashboard showing user activity, services, and KPIs.</p>
+    <h2>Payments and aging</h2>
+    <p>Calculate the Aging.</p>
   </a>
 
-  <a class="container-box" routerLink="/financial-sheet">
+  <a class="container-box" routerLink="/financial-sheet" (click)="goCDMEMO()">
     <img src="https://cdn-icons-png.flaticon.com/512/1087/1087080.png" alt="Financial Sheet" class="box-image">
-    <h2><a (click)="goCDMEMO()">Credit/Debit memo</a></h2>
-    <p>Access billing history, payment details, and financial summary.</p>
+    <h2>Credit/Debit memo</h2>
+    <p>know your credit/debit memo details.</p>
   </a>
 
-   <a class="container-box" routerLink="/financial-sheet">
+   <a class="container-box" routerLink="/financial-sheet" (click)="goOSD()" >
     <img src="https://png.pngtree.com/png-vector/20220518/ourmid/pngtree-sales-report-color-icon-vector-png-image_4660315.png" alt="Financial Sheet" class="box-image">
-    <h2><a (click)="goOSD()" >Overall sales data</a></h2>
-    <p>Access billing history, payment details, and financial summary.</p>
+    <h2>Overall sales data</h2>
+    <p>Find the over all sales data.</p>
   </a>
 </div>
