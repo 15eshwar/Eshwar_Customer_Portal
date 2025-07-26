@@ -27,7 +27,7 @@ router.post('/list-of-delivery', (req, res) => {
     url: 'http://AZKTLDS5CP.kcloud.com:8000/sap/bc/srt/scs/sap/zport_lod_esh?sap-client=100',
     headers: {
       'Content-Type': 'text/xml',
-      'Authorization': 'Basic SzkwMTQ4MzpFc2h3YXJAMTIz',
+      'Authorization': `Basic ${process.env.Password}`,
       'Cookie': 'sap-usercontext=sap-client=100',
     },
     body: soapBody,

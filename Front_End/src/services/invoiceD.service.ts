@@ -3,21 +3,21 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface invoice {
-  KUNAG: string;  // Customer ID
-  VBELN: string;   // Billing Document Number
-  FKDAT: string;// Billing Date
-  FKART: string; // Billing Type
-  KNUMV: string;  // Document Condition Number
-  FKIMG: string;// Billing Quantity
-  MATNR: string; // Material Number
-  NETWR: string;// Net Value
-  WAERK: string; // Currency
-  POSNR: string;   // Item Number
+  KUNAG: string;       // Customer ID
+  VBELN: string;       // Billing Document Number
+  FKDAT: string;       // Billing Date
+  FKART: string;       // Billing Type
+  KNUMV: string;       // Document Condition Number
+  FKIMG: string;       // Billing Quantity
+  MATNR: string;       // Material Number
+  NETWR: string;       // Net Value
+  WAERK: string;       // Currency
+  POSNR: string;       // Item Number
   ITEM_NETWR: string;  // Item Net Value
   PRSDT: string;       // Pricing Date
-  VKORG: string;// Sales Org
-  VRKME: string;// Sales Unit
-  ARKTX: string; //  product description
+  VKORG: string;       // Sales Org
+  VRKME: string;       // Sales Unit
+  ARKTX: string;       //  product description
 }
 @Injectable({
   providedIn: 'root'
@@ -37,7 +37,7 @@ downloadInvoicePDF(vbeln: string): Observable<Blob> {
   return this.http.post(
     'http://localhost:3000/api/invoice_pdf/invoice-download',
     { invoiceNumber: vbeln },
-    { responseType: 'blob' } // VERY IMPORTANT
+    { responseType: 'blob' } // blob
   );
 }
 

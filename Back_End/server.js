@@ -1,8 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const morgan = require('morgan'); // Logging middleware
-const authRoutes = require('./routes/auth'); // Route path
+const morgan = require('morgan'); 
+//paths
+const authRoutes = require('./routes/auth'); 
 const profileRoutes = require ('./routes/Profile')
 const SIRoutes = require ('./routes/inquiry')
 const SORoutes = require('./routes/salesOrder')
@@ -12,8 +13,6 @@ const CDRoutes = require ('./routes/credit_debit')
 const PARoutes = require ('./routes/payage')
 const IVPRoutes = require ('./routes/invoice_pdf')
 const DIVRoutes = require ('./routes/invoiceD')
-
-console.log("hello");
 
 const app = express();
 const PORT = 3000;
@@ -40,9 +39,7 @@ app.get('/', (req, res) => {
   res.send(' Server is up and running!');
 });
 
-// Start Server 
+// Begin Server 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
-
-

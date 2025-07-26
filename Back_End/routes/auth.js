@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const request = require('request');
 const xml2js = require('xml2js');
+require('dotenv').config();
 
-///////////////////////////// ROUTER FOR LOGIN /////////////////////////////////////////////////////
 router.post('/login', (req, res) => {
   const { customerID, password } = req.body;
      if (!customerID || !password) {
@@ -27,7 +27,7 @@ router.post('/login', (req, res) => {
     url: 'http://AZKTLDS5CP.kcloud.com:8000/sap/bc/srt/scs/sap/zport_log_esh?sap-client=100',
     headers: {
       'Content-Type': 'text/xml',
-      'Authorization': 'Basic SzkwMTQ4MzpFc2h3YXJAMTIz',
+      'Authorization': `Basic ${process.env.Password}`,
       'Cookie': 'sap-usercontext=sap-client=100',
     },
     body: soapBody,
@@ -35,7 +35,6 @@ router.post('/login', (req, res) => {
 
   request(options, (error,response, body) => {
     
- 
     if (error) {
       console.error('SOAP Request Error:', error);
       return res.status(500).json({ message: 'Failed to connect to SAP.' });

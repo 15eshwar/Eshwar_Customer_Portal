@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-const authHeader = 'Basic SzkwMTQ4MzpFc2h3YXJAMTIz'; // Your Basic Auth header 
-
 router.post('/invoice-download', async (req, res) => {
   const { invoiceNumber } = req.body;
 
@@ -28,7 +26,7 @@ router.post('/invoice-download', async (req, res) => {
       {
         headers: {
           'Content-Type': 'text/xml',
-          Authorization: authHeader,
+         'Authorization': `Basic ${process.env.Password}`,
         },
         responseType: 'text',
       }
@@ -41,7 +39,7 @@ if (!pdfMatch || !pdfMatch[1]) {
   return res.status(500).send('PDF data not found in response');
 }
 
-const base64String = pdfMatch[1].replace(/\s/g, ''); // remove any newlines or spaces
+const base64String = pdfMatch[1].replace(/\s/g, ''); // remove newlines or spaces
 const buffer = Buffer.from(base64String, 'base64');
 res.setHeader('Content-Type', 'application/pdf');
 res.setHeader('Content-Disposition', `attachment; filename=invoice_${invoiceNumber}.pdf`);

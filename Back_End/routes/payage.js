@@ -26,7 +26,7 @@ router.post('/pay-age-data', (req, res) => {
     url: 'http://AZKTLDS5CP.kcloud.com:8000/sap/bc/srt/scs/sap/zport_pa_esh?sap-client=100',
     headers: {
       'Content-Type': 'text/xml',
-      'Authorization': 'Basic SzkwMTQ4MzpFc2h3YXJAMTIz', // Move to .env in prod
+      'Authorization': `Basic ${process.env.Password}`,
       'Cookie': 'sap-usercontext=sap-client=100',
     },
     body: soapBody,
@@ -72,9 +72,7 @@ router.post('/pay-age-data', (req, res) => {
          return res.status(200).json({
            customerID,
            payAgeData: processedItems,
-         });
-         
-
+         });        
       } catch (ex) {
         console.error('Exception while parsing SOAP response:', ex);
         return res.status(500).json({ message: 'Error extracting data from SOAP response.' });
