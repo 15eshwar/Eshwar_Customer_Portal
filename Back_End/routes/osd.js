@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const request = require('request');
 const xml2js = require('xml2js');
+require('dotenv').config();
 
 router.post('/overall-sales-data', (req, res) => {
   const { customerID } = req.body;

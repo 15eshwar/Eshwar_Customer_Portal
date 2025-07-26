@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
+require('dotenv').config();
 
 router.post('/invoice-download', async (req, res) => {
   const { invoiceNumber } = req.body;
